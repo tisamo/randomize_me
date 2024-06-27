@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:randomize_me/models/couse.dart';
@@ -18,6 +20,7 @@ class _NewCourseState extends State<NewCoursePage> {
   final _formKey = GlobalKey<FormState>();
   final List<TextEditingController> _controllers = [];
   final List<Widget> _formFields = [];
+  late Course courseToEdit;
 
 
   @override
@@ -29,6 +32,26 @@ class _NewCourseState extends State<NewCoursePage> {
     courseDescription.dispose();
     super.dispose();
   }
+
+  @override
+  void initState() {
+    if(widget.courseId != 'new'){
+      CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
+      Course course = courseProvider.getSpecificCourse(widget.courseId);
+      courseToEdit = course;
+      if(course.isDefinedAndNotNull){
+        courseNameController.value = TextEditingValue(text: course.courseName);
+        courseDescription.value = TextEditingValue(text: course.description);
+        course.courseTasks.forEach((element) {
+          _addFormField(element.description);
+        });
+      }
+
+    }
+
+    super.initState();
+  }
+
 
   void _removeFormField(int index) {
     setState(() {
@@ -66,8 +89,9 @@ class _NewCourseState extends State<NewCoursePage> {
     });
   }
 
-  void _addFormField() {
+  void _addFormField([initialValue = '']) {
     final controller = TextEditingController();
+    controller.value = TextEditingValue(text: initialValue);
     final index = _controllers.length;
 
     setState(() {
@@ -108,9 +132,18 @@ class _NewCourseState extends State<NewCoursePage> {
       CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
       final courseId = courseProvider.courses.length;
       course.id = courseId.toString();
-      courseProvider.addCourse(course);
+      String text = '';
+      if(widget.courseId == 'new'){
+        courseProvider.addCourse(course);
+        text = 'New Course Has Been created';
+      } else{
+        courseProvider.overrideCourse(widget.courseId, course);
+        text = 'Course Has Been modified';
+
+      }
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: const Text('New Course Has Been created')),
+        SnackBar(content:  Text('$text')),
       );
       Navigator.of(context).pop();
     }
