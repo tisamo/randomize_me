@@ -11,6 +11,7 @@ import 'package:randomize_me/screens/course-view.dart';
 import 'package:randomize_me/screens/courses.dart';
 import 'package:randomize_me/screens/home.dart';
 import 'package:randomize_me/screens/new-course.dart';
+import 'package:randomize_me/screens/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => NavProvider()),
           ChangeNotifierProvider(create: (_) => CourseProvider()),
         ],
-        child: MaterialApp(
+        child: const  MaterialApp(
         onGenerateRoute: RouteGenerator.generateRoute));
   }
   }
@@ -48,6 +49,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const Home());
       case '/courses':
         return MaterialPageRoute(builder: (_) => const CourseScreen());
+      case '/test':
+        return MaterialPageRoute(builder: (_) => const Test());
       default:
         if (uri.pathSegments.length == 2 && uri.pathSegments.first == 'course') {
           final id = uri.pathSegments[1];

@@ -48,7 +48,7 @@ class _CourseViewerState extends State<CourseViewer> {
             child: Container(
               alignment: Alignment.topCenter,
               width: 500,
-              margin: EdgeInsets.only(top: 30),
+              margin: const EdgeInsets.only(top: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

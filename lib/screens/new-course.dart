@@ -35,6 +35,7 @@ class _NewCourseState extends State<NewCoursePage> {
 
   @override
   void initState() {
+    super.initState();
     if(widget.courseId != 'new'){
       CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
       Course course = courseProvider.getSpecificCourse(widget.courseId);
@@ -42,14 +43,13 @@ class _NewCourseState extends State<NewCoursePage> {
       if(course.isDefinedAndNotNull){
         courseNameController.value = TextEditingValue(text: course.courseName);
         courseDescription.value = TextEditingValue(text: course.description);
-        course.courseTasks.forEach((element) {
+        for (var element in course.courseTasks) {
           _addFormField(element.description);
-        });
+        }
       }
 
     }
 
-    super.initState();
   }
 
 
@@ -125,25 +125,24 @@ class _NewCourseState extends State<NewCoursePage> {
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       _formKey.currentState?.save();
-       Course course = Course(id: '2', courseName: courseNameController.text, description: courseDescription.text, type: 'workout', difficulty: 'basic', courseTasks: []);
+       Course course = Course(id: '2' , courseName: courseNameController.text, description: courseDescription.text, type: 'workout', difficulty: 'basic', courseTasks: []);
       for (var controller in _controllers) {
         course.courseTasks.add(CourseTask(description: controller.text));
       }
       CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
-      final courseId = courseProvider.courses.length;
-      course.id = courseId.toString();
-      String text = '';
+      late String text;
       if(widget.courseId == 'new'){
+        final courseId = courseProvider.courses.length;
+        course.id = courseId.toString();
         courseProvider.addCourse(course);
         text = 'New Course Has Been created';
       } else{
+        course.id = widget.courseId;
         courseProvider.overrideCourse(widget.courseId, course);
         text = 'Course Has Been modified';
-
       }
-
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content:  Text('$text')),
+        SnackBar(content:  Text(text)),
       );
       Navigator.of(context).pop();
     }
@@ -153,7 +152,7 @@ class _NewCourseState extends State<NewCoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Course Builder'),
+        title: const Text('Course Builder'),
         backgroundColor: Colors.black,
       ),
       body: Padding(
@@ -201,12 +200,12 @@ class _NewCourseState extends State<NewCoursePage> {
               ),
               ElevatedButton(
                 onPressed: _addFormField,
-                child: Text('Add Field'),
+                child: const Text('Add Field'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),

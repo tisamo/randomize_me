@@ -1,6 +1,13 @@
 import 'dart:convert';
 
 class Course {
+  String id;
+  String courseName;
+  String description;
+  String type;
+  String difficulty;
+  List<CourseTask> courseTasks;
+
   Course({
     required this.id,
     required this.courseName,
@@ -9,13 +16,6 @@ class Course {
     required this.difficulty,
     required this.courseTasks,
   });
-
-  String id;
-  String courseName;
-  String description;
-  String type;
-  String difficulty;
-  List<CourseTask> courseTasks;
 
   factory Course.fromJson(Map<String, dynamic> json) {
     return Course(
@@ -43,7 +43,6 @@ class Course {
   static List<Course> listFromJson(String str) => List<Course>.from(json.decode(str).map((x) => Course.fromJson(x)));
 }
 
-// CourseTask class
 class CourseTask {
   CourseTask({
     required this.description,

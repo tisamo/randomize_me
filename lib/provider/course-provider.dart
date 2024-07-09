@@ -28,7 +28,6 @@ class CourseProvider with ChangeNotifier {
 
    overrideCourse(id, Course course){
     final index = _courses.indexWhere((Course element) => element.id == id);
-
     _courses[index] = course;
     notifyListeners();
   }

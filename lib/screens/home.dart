@@ -16,22 +16,20 @@ class Home extends StatelessWidget {
           title: const Text('Home'),
           automaticallyImplyLeading: false,
         ),
-        body:  Container(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                          Center(
-                            child: const Column(
-                              children: [
-                                 Text('Home', style: AppTextStyles.title),
-                                 Padding(padding: EdgeInsets.only(top: 20),
-                                child: const Text('In this app you can select a course then you gonna get tasks in randomly'))
-                              ],
-                            ),
-                          )
-                        ])
-    ),
+        body:  const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+              Center(
+                child: Column(
+                  children: [
+                     Text('Home', style: AppTextStyles.title),
+                     Padding(padding: EdgeInsets.only(top: 20),
+                    child: Text('In this app you can select a course then you gonna get tasks in random order'))
+                  ],
+                ),
+              )
+            ]),
       bottomNavigationBar: const BottomNav(),
 
     );

@@ -44,6 +44,10 @@ class _BottomNavState extends State<BottomNav> {
                       text: 'Home',
                     ),
                     GButton(
+                      icon: LineIcons.home,
+                      text: 'Test',
+                    ),
+                    GButton(
                       icon: LineIcons.heart,
                       text: 'Courses',
                     ),
