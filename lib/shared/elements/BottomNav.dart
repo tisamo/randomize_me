@@ -45,11 +45,11 @@ class _BottomNavState extends State<BottomNav> {
                     ),
                     GButton(
                       icon: LineIcons.home,
-                      text: 'Test',
+                      text: 'Browse',
                     ),
                     GButton(
                       icon: LineIcons.heart,
-                      text: 'Courses',
+                      text: 'My Courses',
                     ),
                   ],
                   selectedIndex: navProvider.selectedIndex,

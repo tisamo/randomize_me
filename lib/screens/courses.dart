@@ -9,13 +9,10 @@ class CourseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (BuildContext context) {
         double screenWidth = MediaQuery.of(context).size.width;
 
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.black,
             title: const Text('Courses'),
             automaticallyImplyLeading: false,
           ),
@@ -69,7 +66,5 @@ class CourseScreen extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }

@@ -6,7 +6,7 @@ class Course {
   String description;
   String type;
   String difficulty;
-  List<CourseTask> courseTasks;
+  List<String> courseTasks;
 
   Course({
     required this.id,
@@ -24,11 +24,12 @@ class Course {
       description: json['description'],
       type: json['type'],
       difficulty: json['difficulty'],
-      courseTasks: List<CourseTask>.from(
+      courseTasks: List<String>.from(
         json['courseTasks'].map((task) => CourseTask.fromJson(task)),
       ),
     );
   }
+
 
   Map<String, dynamic> toJson() => {
     'id': id,
@@ -36,7 +37,7 @@ class Course {
     'description': description,
     'type': type,
     'difficulty': difficulty,
-    'courseTasks': List<dynamic>.from(courseTasks.map((task) => task.toJson())),
+    'courseTasks': List<String>.from(courseTasks.map((task) => task)),
   };
 
   static String listToJson(List<Course> courses) => json.encode(List<dynamic>.from(courses.map((course) => course.toJson())));

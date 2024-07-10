@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AppTheme {
+ class  AppTheme {
   static const appBarTheme= AppBarTheme(
     color: Colors.black,
   );
-
 
   static const TextStyle simpleBold = TextStyle(
     fontSize: 12.0,

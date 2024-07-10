@@ -38,13 +38,13 @@ class _NewCourseState extends State<NewCoursePage> {
     super.initState();
     if(widget.courseId != 'new'){
       CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
-      Course course = courseProvider.getSpecificCourse(widget.courseId);
-      courseToEdit = course;
-      if(course.isDefinedAndNotNull){
+      Course? course = courseProvider.getSpecificCourse(widget.courseId);
+      if(course != null){
+        courseToEdit = course;
         courseNameController.value = TextEditingValue(text: course.courseName);
         courseDescription.value = TextEditingValue(text: course.description);
         for (var element in course.courseTasks) {
-          _addFormField(element.description);
+          _addFormField(element);
         }
       }
 
@@ -127,7 +127,7 @@ class _NewCourseState extends State<NewCoursePage> {
       _formKey.currentState?.save();
        Course course = Course(id: '2' , courseName: courseNameController.text, description: courseDescription.text, type: 'workout', difficulty: 'basic', courseTasks: []);
       for (var controller in _controllers) {
-        course.courseTasks.add(CourseTask(description: controller.text));
+        course.courseTasks.add(controller.text);
       }
       CourseProvider courseProvider = Provider.of<CourseProvider>(context, listen: false);
       late String text;

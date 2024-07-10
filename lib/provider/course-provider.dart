@@ -12,6 +12,8 @@ class CourseProvider with ChangeNotifier {
   CourseProvider() {
     loadCourses();
   }
+  
+
 
   Future<void> loadCourses() async {
     final prefs = await SharedPreferences.getInstance();
@@ -22,7 +24,7 @@ class CourseProvider with ChangeNotifier {
     }
   }
 
- Course getSpecificCourse(id) {
+ Course? getSpecificCourse(id) {
    return _courses.singleWhere((Course element) => element.id == id);
   }
 

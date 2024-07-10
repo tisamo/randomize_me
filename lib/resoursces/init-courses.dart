@@ -7,11 +7,7 @@ List<Course> initCourses = [Course(
   difficulty: 'basic',
   type: 'workout',
   courseTasks: [
-    CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-    CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-    CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-    CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-    CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.')
+ '5-10 minutes of light cardio to get the heart rate up.',
 
   ],
 ),
@@ -22,11 +18,7 @@ List<Course> initCourses = [Course(
     difficulty: 'basic',
     type: 'workout',
     courseTasks: [
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.')
+      '5-10 minutes of light cardio to get the heart rate up.',
     ],
   ),
   Course(
@@ -36,11 +28,6 @@ List<Course> initCourses = [Course(
     difficulty: 'basic',
     type: 'workout',
     courseTasks: [
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.'),
-      CourseTask(description: '5-10 minutes of light cardio to get the heart rate up.')
-
+      '5-10 minutes of light cardio to get the heart rate up.',
     ],
   )];

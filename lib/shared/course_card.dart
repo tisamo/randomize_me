@@ -71,7 +71,7 @@ class CourseCard extends StatelessWidget {
               }, icon: const Icon(Icons.edit)),
               course.id == courseProvider.selectedCourse?.id ? const Text ('Selected', style: AppTextStyles.simpleBold,)
                   :IconButton(onPressed: () {
-                Course courseToSet = courseProvider.getSpecificCourse(course.id);
+                Course? courseToSet = courseProvider.getSpecificCourse(course.id);
                 courseProvider.selectCourse(courseToSet);
               }, icon: const Icon(Icons.check))
             ],

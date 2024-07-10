@@ -1,41 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:randomize_me/provider/theme-provider.dart';
+import 'package:randomize_me/shared/Texts/themes.dart';
 
 import '../elements/BottomNav.dart';
 
 class SimpleLayout extends StatelessWidget {
   final Widget layout;
   final String title;
+  final AppBar? customAppBar;
 
-  const SimpleLayout({Key? key, required this.layout, required this.title})
+  const SimpleLayout(
+      {Key? key, required this.layout, required this.title, this.customAppBar})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Theme(data: ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: Colors.purple,
-        brightness: Brightness.dark,
-      ),
-      textTheme: TextTheme(
-        displayLarge: const TextStyle(
-          fontSize: 72,
-          fontWeight: FontWeight.bold,
-        ),
-        titleLarge: GoogleFonts.oswald(
-          fontSize: 30,
-          fontStyle: FontStyle.italic,
-        ),
-        bodyMedium: GoogleFonts.merriweather(),
-        displaySmall: GoogleFonts.pacifico(),
-      ),
-    ),
-      child: Scaffold(appBar: AppBar(
-        backgroundColor: Colors.black, title: Text(title),
-      ), bottomNavigationBar: const BottomNav(),
-        body: layout,
-      ),);
+    ThemeProvider themeProvider =
+        Provider.of<ThemeProvider>(context, listen: false);
+    return Scaffold(
+      appBar: customAppBar ??
+          AppBar(
+              title: Text(title),
+              actions: [
+                IconButton(
+                    onPressed: () => {themeProvider.changeTheme()},
+                    icon: themeProvider.themeDataStyle == lightTheme
+                        ? const Icon(Icons.dark_mode)
+                        : const Icon(Icons.sunny)),
+              ],
+              titleTextStyle: const TextStyle(color: Colors.white)),
+              bottomNavigationBar: const BottomNav(),
+              body: layout,
+    );
   }
 }
