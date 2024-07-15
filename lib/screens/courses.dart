@@ -40,9 +40,9 @@ class CourseScreen extends StatelessWidget {
                       child: ListView.separated(
                         shrinkWrap: true,
                         itemCount: courseProvider.courses.length,
-                        itemBuilder: (context, index) {
+                        itemBuilder: (_, index) {
                           final course = courseProvider.courses[index];
-                          return CourseCard(course: course, courseProvider: courseProvider,);
+                          return CourseCard(course: course, courseProvider: courseProvider);
                         },
                         separatorBuilder: (context, index) {
                           return const Divider(

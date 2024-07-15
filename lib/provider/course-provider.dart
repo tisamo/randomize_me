@@ -19,7 +19,6 @@ class CourseProvider with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     String? coursesJson = prefs.getString('courses');
     if (coursesJson != null) {
-      _courses = Course.listFromJson(coursesJson);
       notifyListeners();
     }
   }
@@ -39,21 +38,8 @@ class CourseProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> saveCourses() async {
-    final prefs = await SharedPreferences.getInstance();
-    String coursesJson = Course.listToJson(_courses);
-    await prefs.setString('courses', coursesJson);
-  }
 
-  void addCourse(Course course) {
-    _courses.add(course);
-    saveCourses();
-    notifyListeners();
-  }
 
-  void removeCourse(Course course) {
-    _courses.remove(course);
-    saveCourses();
-    notifyListeners();
-  }
+
+
 }

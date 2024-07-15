@@ -8,7 +8,9 @@ ThemeData lightTheme = ThemeData(
     bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
   ),
   appBarTheme: const AppBarTheme(
-    color: Colors.blue,
+    color: Colors.green,
+    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      toolbarTextStyle: TextStyle(color: Colors.white),
     iconTheme: IconThemeData(color: Colors.white),
   ),
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),

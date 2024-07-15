@@ -17,14 +17,8 @@ import 'package:randomize_me/screens/test.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final courses = prefs.getString('courses');
-  if (courses != null && courses.isNotEmpty) {
-    String coursesJson = Course.listToJson(initCourses);
-    await prefs.setString('courses', coursesJson);
-  }
+ main()  {
+
   runApp(const MyApp());
 }
 

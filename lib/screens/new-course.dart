@@ -134,7 +134,6 @@ class _NewCourseState extends State<NewCoursePage> {
       if(widget.courseId == 'new'){
         final courseId = courseProvider.courses.length;
         course.id = courseId.toString();
-        courseProvider.addCourse(course);
         text = 'New Course Has Been created';
       } else{
         course.id = widget.courseId;
